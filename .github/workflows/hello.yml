@@ -2,11 +2,18 @@ name: My First GitHub Action
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   say-hello:
-    runs-on: ununtu-latest
-    steps: 
-    - name: Print a message
-      run: echo "Hello from GitHub Actions!"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
+      - name: List project files
+        run: ls -la
+
+      - name: Print a message
+        run: echo "Hello from GitHub Actions!"
